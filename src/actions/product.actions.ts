@@ -2,29 +2,15 @@
 
 import { Product } from "@/types/product.type";
 
-type ProductsPayload = {
-  limit?: string;
-};
-
 /**
- * The function `getProducts` makes an asynchronous request to a store API to fetch products based on
- * the provided parameters.
- * @param {ProductsPayload} [params] - The `getProducts` function is an asynchronous function that
- * fetches a list of products from a store API. It takes an optional parameter `params` of type
- * `ProductsPayload`, which is used to specify any search parameters for the products query.
+ * The function `getProducts` makes an asynchronous request to a store API to fetch a list of products.
  * @returns The `getProducts` function returns a Promise that resolves to an array of `Product`
  * objects.
  */
-export const getProducts: (
-  params?: ProductsPayload
-) => Promise<Product[]> = async (params?: ProductsPayload) => {
-  const searchParams = new URLSearchParams(params);
-  const response = await fetch(
-    process.env.STORE_API + "products?" + searchParams,
-    {
-      method: "GET",
-    }
-  );
+export const getProducts: () => Promise<Product[]> = async () => {
+  const response = await fetch(process.env.STORE_API + "products", {
+    method: "GET",
+  });
   return response.json();
 };
 

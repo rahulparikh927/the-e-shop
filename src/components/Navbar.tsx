@@ -5,6 +5,7 @@ import Link from "next/link";
 import SearchCategorySuggestion from "./SearchCategorySuggestion";
 import SearchProductSuggestion from "./SearchProductSuggestion";
 import { Suspense } from "react";
+import Loader from "./Loader";
 
 const Navbar = () => {
   return (
@@ -16,14 +17,16 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="w-[30%] sm:w-[50%] flex justify-end items-center pr-4">
-          <SearchCommand>
-            <Suspense key={1} fallback={<h3>Loading category</h3>}>
-              <SearchCategorySuggestion />
-            </Suspense>
-            <Suspense key={2} fallback={<h3>Loading product</h3>}>
-              <SearchProductSuggestion />
-            </Suspense>
-          </SearchCommand>
+          <Suspense key={1} fallback={<Loader />}>
+            <SearchCommand>
+              <Suspense key={2} fallback={<h3>Loading category</h3>}>
+                <SearchCategorySuggestion />
+              </Suspense>
+              <Suspense key={3} fallback={<h3>Loading product</h3>}>
+                <SearchProductSuggestion />
+              </Suspense>
+            </SearchCommand>
+          </Suspense>
           <Cart />
         </div>
       </Container>
