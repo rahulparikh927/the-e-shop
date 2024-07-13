@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           <div className="flex-1 flex flex-col h-full my-14">{children}</div>
           <Toaster />
           <Footer />
+          <SpeedInsights />
         </main>
       </body>
     </html>

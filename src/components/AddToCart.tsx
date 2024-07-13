@@ -13,9 +13,13 @@ type Props = {
 };
 
 const AddToCart = ({ product }: Props) => {
-  const [isAddToCart, setIsAddToCart] = useState(false);
-  const [quantity, setQuantity] = useState(0);
   const { cart, updateCart } = useCartStore();
+  const [isAddToCart, setIsAddToCart] = useState(
+    cart.products[product.id] ? true : false
+  );
+  const [quantity, setQuantity] = useState(
+    cart.products[product.id] ? cart.products[product.id].qty ?? 0 : 0
+  );
   const handleAddToCart = () => {
     setIsAddToCart(true);
     setQuantity(quantity + 1);
