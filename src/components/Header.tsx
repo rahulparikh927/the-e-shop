@@ -7,7 +7,7 @@ import SearchProductSuggestion from "./SearchProductSuggestion";
 import { Suspense } from "react";
 import CategoryMenu from "./CategoryMenu";
 
-const Navbar = () => {
+const Header = () => {
   return (
     <header className="sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all">
       <Container className="flex flex-row md:justify-between">
@@ -37,4 +37,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

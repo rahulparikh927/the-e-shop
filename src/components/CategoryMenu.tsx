@@ -4,17 +4,26 @@ import Link from "next/link";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { Button } from "./ui/button";
 import { MenuIcon } from "lucide-react";
+import NavItem from "./NavItem";
+import { TooltipProvider } from "./ui/tooltip";
+import Container from "./Container";
 
 export default async function CategoryMenu() {
   const categories = await getCategories();
   return (
     <>
       <nav className="hidden items-center gap-6 lg:flex">
-        {categories.map((category) => (
-          <Link key={category} href={"/category/" + category} className="mr-2">
-            {capitalizeFirstLetter(category)}
-          </Link>
-        ))}
+        <TooltipProvider>
+          {categories.map((category) => (
+            <NavItem
+              href={"/category/" + category}
+              key={category}
+              label={capitalizeFirstLetter(category)}
+            >
+              {capitalizeFirstLetter(category)}
+            </NavItem>
+          ))}
+        </TooltipProvider>
       </nav>
       <Sheet>
         <SheetTrigger asChild>
@@ -23,19 +32,22 @@ export default async function CategoryMenu() {
             <span className="sr-only">Toggle navigation menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent side="top" className="lg:hidden">
-          <nav className="grid gap-4 py-6">
-            {categories.map((category) => (
-              <Link
-                key={category}
-                href={"/category/" + category}
-                className="flex w-full items-center py-2 text-lg font-semibold"
-                prefetch={false}
-              >
-                {capitalizeFirstLetter(category)}
-              </Link>
-            ))}
-          </nav>
+        <SheetContent side="top" className="lg:hidden pt-12">
+          <Container>
+            <nav className="grid gap-4 py-6">
+              <TooltipProvider>
+                {categories.map((category) => (
+                  <NavItem
+                    href={"/category/" + category}
+                    key={category}
+                    label={capitalizeFirstLetter(category)}
+                  >
+                    {capitalizeFirstLetter(category)}
+                  </NavItem>
+                ))}
+              </TooltipProvider>
+            </nav>
+          </Container>
         </SheetContent>
       </Sheet>
     </>
