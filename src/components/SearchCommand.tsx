@@ -22,7 +22,7 @@ const SearchCommand = ({ children }: { children: ReactNode }) => {
     <>
       <Button
         variant="outline"
-        className="w-[60%] sm:w-full mr-4 justify-start"
+        className="sm:w-full mr-4 justify-start max-w-[50%] overflow-hidden"
         onClick={() => setOpen(true)}
       >
         <span className="hidden lg:inline-flex">Search Product...</span>

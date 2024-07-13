@@ -19,7 +19,7 @@ export default async function SingleProduct({
 
   return (
     <Container>
-      <div className="flex sm:flex-col">
+      <div className="flex sm:flex-col md:flex-row">
         <div className="w-[50%] sm:w-[100%] h-[400px] py-4 rounded-lg shadow-sm content-center border">
           <ProductImage
             src={product.image}
@@ -29,11 +29,11 @@ export default async function SingleProduct({
             style={{
               objectFit: "contain",
             }}
-            className="h-64 w-full object-cover "
+            className="h-64 w-full object-cover"
             loading="lazy"
           />
         </div>
-        <div className="w-[50%] pl-6 sm:w-[100%] sm:mt-12">
+        <div className="w-[50%] pl-6 sm:w-[100%] sm:mt-12 md:mt-0">
           <h3 className="text-2xl mb-4">{product.title}</h3>
           <p className="mb-4">{product.description}</p>
           <div className="mb-4">
